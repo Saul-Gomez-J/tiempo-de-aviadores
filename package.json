@@ -3,15 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --webpack",
+    "build": "payload generate:importmap && payload generate:types && next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate:importmap": "payload generate:importmap",
+    "generate:types": "payload generate:types",
+    "import-post": "npx tsx scripts/import-post.ts"
   },
   "dependencies": {
+    "@payloadcms/db-postgres": "^3.82.0",
+    "@payloadcms/next": "^3.82.0",
+    "@payloadcms/plugin-seo": "^3.82.0",
+    "@payloadcms/richtext-lexical": "^3.82.0",
+    "@vercel/blob": "^2.3.3",
+    "dotenv": "^17.4.1",
+    "graphql": "^16.13.2",
+    "marked": "^18.0.0",
     "next": "16.2.3",
+    "payload": "^3.82.0",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "sharp": "^0.34.5",
+    "shiki": "^4.0.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -20,7 +34,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
+    "gray-matter": "^4.0.3",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
