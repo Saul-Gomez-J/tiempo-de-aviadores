@@ -1,4 +1,4 @@
-import { marked } from 'marked'
+import { marked, type Token, type Tokens } from 'marked'
 
 interface LexicalNode {
   type: string
@@ -147,7 +147,7 @@ function codeBlockNode(code: string, language: string): LexicalNode {
 }
 
 // Parse inline markdown tokens to Lexical text nodes
-function parseInlineTokens(tokens: marked.Token[]): LexicalNode[] {
+function parseInlineTokens(tokens: Token[]): LexicalNode[] {
   const nodes: LexicalNode[] = []
 
   for (const token of tokens) {
@@ -213,7 +213,7 @@ function parseInlineTokens(tokens: marked.Token[]): LexicalNode[] {
   return nodes
 }
 
-function processListItems(items: marked.Tokens.ListItem[], ordered: boolean): LexicalNode {
+function processListItems(items: Tokens.ListItem[], ordered: boolean): LexicalNode {
   const listItems = items.map((item) => {
     const children: LexicalNode[] = []
     if (item.tokens) {

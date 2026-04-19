@@ -2,6 +2,7 @@ import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'paylo
 import { revalidatePath } from 'next/cache'
 
 interface Post {
+  id: number | string
   slug: string
   status: string
   [key: string]: unknown
